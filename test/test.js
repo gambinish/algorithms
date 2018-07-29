@@ -26,7 +26,7 @@ describe("bubbleSort", function() {
     bubbleSort().should.be.a("array");
   });
   it("returned array should be sorted", function() {
-    var arr = bubbleSort();
-    expect(bubbleSort([3, 2, 1])).to.deep.equal([1, 2, 3]);
+    var arr = bubbleSort([3,2,1]);
+    expect(arr).to.deep.equal([1, 2, 3]);
   });
 });

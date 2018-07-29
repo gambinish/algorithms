@@ -30,7 +30,7 @@ module.exports = function() {
   while (array2.length < 10) {
     array2.push(Math.floor(Math.random() * 50));
   }
-  console.log(array2);
+  // console.log(array2);
 
   function bubbleSort(array2) {
     for (let i = 0; i < array2.length; i++) {
@@ -44,7 +44,7 @@ module.exports = function() {
   }
 
   let sortedArr = bubbleSort(array2.slice());
-  console.log(sortedArr);
+  // console.log(sortedArr);
   return sortedArr;
 
   console.timeEnd("sort");
