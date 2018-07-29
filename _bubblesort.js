@@ -1,26 +1,54 @@
-console.time("sort");
+// var sanityCheck = "sanity";
+// console.log(sanityCheck);
 
-let array2 = [];
-while (array2.length < 10) {
-  array2.push(Math.floor(Math.random() * 50));
-}
+// let array2 = [];
+// while (array2.length < 10) {
+//   array2.push(Math.floor(Math.random() * 50));
+// }
 // console.log(array2);
 
-function bubbleSort(array2) {
-  for (let i = 0; i < array2.length; i++) {
-    for (let j = 1; j < array2.length; j++) {
-      if (array2[j - 1] > array2[j]) {
-        [array2[j - 1], array2[j]] = [array2[j], array2[j - 1]];
+// function bubbleSort(array2) {
+//   for (let i = 0; i < array2.length; i++) {
+//     for (let j = 1; j < array2.length; j++) {
+//       if (array2[j - 1] > array2[j]) {
+//         [array2[j - 1], array2[j]] = [array2[j], array2[j - 1]];
+//       }
+//     }
+//   }
+//   return array2;
+// }
+
+// let sortedArr = bubbleSort(array2.slice());
+// console.log(sortedArr);
+// return sortedArr;
+
+// console.timeEnd("sort");
+
+module.exports = function() {
+  console.time("sort");
+  let array2 = [];
+  while (array2.length < 10) {
+    array2.push(Math.floor(Math.random() * 50));
+  }
+  console.log(array2);
+
+  function bubbleSort(array2) {
+    for (let i = 0; i < array2.length; i++) {
+      for (let j = 1; j < array2.length; j++) {
+        if (array2[j - 1] > array2[j]) {
+          [array2[j - 1], array2[j]] = [array2[j], array2[j - 1]];
+        }
       }
     }
+    return array2;
   }
-  return array2;
-}
 
-let sortedArr = bubbleSort(array2.slice());
-// console.log(sortedArr);
+  let sortedArr = bubbleSort(array2.slice());
+  console.log(sortedArr);
+  return sortedArr;
 
-console.timeEnd("sort");
+  console.timeEnd("sort");
+};
 
 ///
 
@@ -42,3 +70,4 @@ console.timeEnd("sort");
 // }
 
 // console.timeEnd("sort");
+// module.exports = bubbleSort;
