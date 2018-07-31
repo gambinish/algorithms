@@ -1,13 +1,11 @@
 const assert = require("assert");
 const should = require("chai").should();
-const expect = require("chai").expect();
+
+var chai = require("chai"),
+  expect = chai.expect; // preference and tested with expect
+chai.use(require("chai-sorted"));
+
 const bubbleSort = require("../_bubblesort.js");
-
-// var array2 = [];
-
-// bubbleSort = function() {
-//   console.log("test");
-// };
 
 describe("Array", function() {
   describe("#indexOf()", function() {
@@ -17,8 +15,8 @@ describe("Array", function() {
   });
 });
 
-describe("bubbleSort", function() {
-  // var bubbleSort = require("../_bubblesort.js");
+describe("bubbleSort", function(arr) {
+  arr = bubbleSort();
   it("should be a function", function() {
     bubbleSort.should.be.a("function");
   });
@@ -26,7 +24,6 @@ describe("bubbleSort", function() {
     bubbleSort().should.be.a("array");
   });
   it("returned array should be sorted", function() {
-    var arr = bubbleSort([3,2,1]);
-    expect(arr).to.deep.equal([1, 2, 3]);
+    expect(arr).to.be.sorted();
   });
 });
