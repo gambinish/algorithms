@@ -122,42 +122,84 @@
 
 /////////////////
 
-let unsortedArr = [];
+// let unsortedArr = [];
 
-while (unsortedArr.length < 10) {
-  unsortedArr.push(Math.floor(Math.random() * 100));
-}
+// while (unsortedArr.length < 10) {
+//   unsortedArr.push(Math.floor(Math.random() * 100));
+// }
+// // console.log(unsortedArr);
+
+// function mergeSort(arr) {
+//   if (arr.length === 1) {
+//     return arr;
+//   }
+
+//   let middle = Math.floor(arr.length / 2);
+//   let left = arr.slice(0, middle);
+//   let right = arr.slice(middle);
+
+//   return merge(mergeSort(left), mergeSort(right));
+// }
+// s;
+
+// function merge(left, right) {
+//   let result = [];
+//   let leftIndex = 0;
+//   let rightIndex = 0;
+
+//   while (leftIndex < left.length && rightIndex < right.length) {
+//     if (left[leftIndex] < right[rightIndex]) {
+//       result.push(left[leftIndex]);
+//       leftIndex++;
+//     } else {
+//       result.push(right[rightIndex]);
+//       rightIndex++;
+//     }
+//     // return result.concat(left.slice(leftIndex).concat(right.slice(rightIndex)));
+//     return result.concat(left.concat(right));
+//   }
+// }
 // console.log(unsortedArr);
+// console.log(mergeSort(unsortedArr));
 
-function mergeSort(arr) {
-  if (arr.length === 1) {
-    return arr;
-  }
 
-  let middle = Math.floor(arr.length / 2);
-  let left = arr.slice(0, middle);
-  let right = arr.slice(middle);
+let myArray = [];
 
-  return merge(mergeSort(left), mergeSort(right));
+for (i = 0; i < 10; i++) {
+  myArray[i] = Math.floor( Math.random() * 100 );
 }
-s;
+// console.log(myArray)
 
-function merge(left, right) {
-  let result = [];
-  let leftIndex = 0;
-  let rightIndex = 0;
+// let left = []
+// let center = []
+// let right = []
 
-  while (leftIndex < left.length && rightIndex < right.length) {
-    if (left[leftIndex] < right[rightIndex]) {
-      result.push(left[leftIndex]);
-      leftIndex++;
-    } else {
-      result.push(right[rightIndex]);
-      rightIndex++;
-    }
-    // return result.concat(left.slice(leftIndex).concat(right.slice(rightIndex)));
-    return result.concat(left.concat(right));
+
+const sort = (array) => {
+
+  let left = []
+  let center = []
+  let right = []
+  let pivot = array[0]
+  let sorted = []
+
+  if (array.length > 0) {
+    array.forEach((value) => {
+      if (value < pivot) {
+        left.push(value)
+      }
+      if (value === pivot) {
+        center.push(value)
+      }
+      if (value > pivot) {
+        right.push(value)
+      }
+      sorted = sort(left).concat(center).concat(sort(right))
+    })
   }
+  return sorted
 }
-console.log(unsortedArr);
-console.log(mergeSort(unsortedArr));
+
+let result = sort(myArray)
+console.log('RESULT: ', result)
+

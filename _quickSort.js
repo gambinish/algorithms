@@ -1,32 +1,58 @@
-console.time("sort");
+// console.time("sort");
 
-let arr = [];
+let unsorted = [];
 
-while (arr.length < 10) {
-  arr.push(Math.floor(Math.random() * 50));
+while (unsorted.length < 10) {
+  unsorted.push(Math.floor(Math.random() * 100));
 }
-console.log(arr);
+// console.log(arr);
+
+// function quickSort(arr) {
+//   let pivot = arr[0];
+//   let left = [];
+//   let right = [];
+//   let i = 0;
+
+//   if (arr.length <= 1) {
+//     return arr;
+//   } else {
+//     for (i = 1; i < arr.length; i++) {
+//       if (arr[i] <= pivot) {
+//         left.push(arr[i]);
+//       } else {
+//         right.push(arr[i]);
+//       }
+//     }
+//   }
+//   // return left.concat(pivot, right); // return only once
+//   return quickSort(left).concat(pivot, quickSort(right)); // recursively call function
+// }
+// console.log(quickSort(unsorted));
+
+// console.timeEnd("sort");
+
 
 function quickSort(arr) {
-  let pivot = arr[0];
-  let left = [];
-  let right = [];
-  let i = 0;
+  let less = []
+  let equal = []
+  let greater = []
 
   if (arr.length <= 1) {
-    return arr;
+    return arr
   } else {
-    for (i = 1; i < arr.length; i++) {
-      if (arr[i] <= pivot) {
-        left.push(arr[i]);
-      } else {
-        right.push(arr[i]);
+    let pivot = arr[0]
+    arr.forEach((num) => {
+      if (num < pivot) {
+        less.push(num)
       }
-    }
+      if (num === pivot) {
+        equal.push(num)
+      }
+      if (num > pivot) {
+        greater.push(pivot)
+      }
+    })
+    return quickSort(less).concat(equal).concat(quickSort(greater))
   }
-  // return left.concat(pivot, right); // return only once
-  return quickSort(left).concat(pivot, quickSort(right)); // recursively call function
 }
-console.log(quickSort(arr));
-
-console.timeEnd("sort");
+console.log(quickSort(unsorted))
